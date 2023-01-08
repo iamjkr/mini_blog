@@ -46,7 +46,7 @@ def user_login(request):
                 messages.error(request, 'Incorrect username or password')
                 return redirect('/')
         else:
-            return render(request,'index.html', {'form': form})
+            return render(request,'login.html', {'form': form})
     else:
         return redirect('dashboard')
 
