@@ -1,0 +1,51 @@
+{% include 'base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+{% block base %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <br>
+            <img src="{% static 'images/log.jpg' %}"
+                 width="100%" height="120%">
+        </div>
+
+        <div class="col-md-6">
+            <br><br><br><br><br><br><br>
+            <form method="POST" action="{% url 'login' %}">
+                <h2>Please Login Here...</h2>
+                {% csrf_token %}
+                {% for fm in form %}}
+                    <div class="form-group">
+                    {{ fm.label_tag }} {{ fm }} {{ fm.errors|striptags }}
+                    </div>
+                {% endfor %}
+<br>
+                <center>
+                <input type="submit" value="Login" class="btn btn-primary">
+                <input type="reset" value="Clear" class="btn btn-danger"><br>
+                    <a href="{% url 'register' %}">Create New Account Here</a>
+                </center>
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger my-3">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
