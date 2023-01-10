@@ -10,7 +10,8 @@
     <div class = "row">
     <div class = "col-sm-2 text-white my-5 text-center">
         <h4 class="my-5">Profile</h4>
-        <h5>{{ full_name }}</h5>
+        <h5>{{ full_name| upper }}</h5><br>
+    <h5>Your IP:{{ user_ip }}</h5>
         {%  for group in groups %}
             <p>{{ group.name }}</p>
         {% endfor %}

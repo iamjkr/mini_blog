@@ -65,9 +65,9 @@ def dashboard(request):
         user = request.user
         full_name = user.get_full_name()
         groups = user.groups.all()
+        user_ip = request.session.get('user_ip',0)
 
-
-        return render(request,'dashboard.html', {'posts': posts, 'full_name': full_name, 'groups': groups})
+        return render(request,'dashboard.html', {'posts': posts, 'full_name': full_name, 'groups': groups,'user_ip': user_ip})
     else:
         return redirect('login')
 
